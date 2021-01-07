@@ -1,57 +1,15 @@
-import React, {useState} from 'react';
-
-// для классовых компонентов this.setState({a:1}) -> this.render()
-
-function computeInitialCounter(){
-  console.log('Some calculations...');
-  return Math.trunc(Math.random() * 20);
-}
+import React, {useState, useEffect} from 'react';
 
 function App() {
-
-  // const [counter, setCounter] = useState(0);
-  // const [counter, setCounter] = useState(computeInitialCounter());
-  const [counter, setCounter] = useState(() => {
-    return computeInitialCounter()
-  })
-
-  const [state, setState] = useState({
-    title: 'Counter',
-    date: Date.now()
-  })
-
-  function increment(){
-    // setCounter(counter + 1);
-    // setCounter(counter + 1);
-    setCounter((prevCounter) => {
-      return prevCounter + 1
-    });
-    // setCounter(prev => prev + 1);
-  }
-
-  function decrement(){
-    setCounter(counter - 1);
-  }
-
-  function updateTitle(){
-    setState(prev => {
-      return {
-        ...prev,
-        title: 'New name'
-      }
-    })
-  }
-
+  const [type, setType] = useState('users');
   return (
     <div>
-     <h1>Counter: {counter}</h1>
-     <button onClick={increment} className="btn btn-primary">Add</button>
-     <button onClick={decrement} className="btn btn-danger">Delete</button>
-     <button onClick={updateTitle} className="btn btn-info">Change name</button>
+      <h1>Resource: {type}</h1>
 
-     <pre>
-       {JSON.stringify(state, null, 2)}
-     </pre>
+      <button class="btn btn-primary" onClick={()=> setType('users')}>Users</button>
+      <button class="btn btn-warning" onClick={()=> setType('todo')}>Todo</button>
+      <button class="btn btn-info" onClick={()=> setType('posts')}>Posts</button>
+
     </div>
   );
 }
