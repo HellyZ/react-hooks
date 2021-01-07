@@ -2,9 +2,14 @@ import React, {useState} from 'react';
 
 // для классовых компонентов this.setState({a:1}) -> this.render()
 
+function computeInitialCounter(){
+  console.log('Some calculations...');
+  return Math.trunc(Math.random() * 20);
+}
+
 function App() {
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(computeInitialCounter());
 
   function increment(){
     // setCounter(counter + 1);
