@@ -11,9 +11,10 @@ function App() {
   const [number, setNumber] = useState(42)
   const [colored, setColored] = useState(false)
 
-  const styles = {
+  const styles = useMemo(() => ({
     color: colored ? 'gold' : 'green'
-  }
+  }), [colored])
+
 
   const computed = useMemo(() => { //cached
     return complexCompute(number)
@@ -23,7 +24,7 @@ function App() {
     console.log('Style changed')
   }, [styles])
 
-  
+
   return (
     <div>
       <h1 style={styles}>Computed number: {number}</h1>
