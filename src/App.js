@@ -10,11 +10,15 @@ function complexCompute(num){
 function App() {
   const [number, setNumber] = useState(42)
   const [colored, setColored] = useState(false)
-  const computed = complexCompute(number)
 
   const styles = {
     color: colored ? 'gold' : 'green'
   }
+
+  const computed = useMemo(() => { //cached
+    return complexCompute(number)
+  }, [number])
+
 
   return (
     <div>
