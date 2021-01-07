@@ -9,7 +9,11 @@ function computeInitialCounter(){
 
 function App() {
 
-  const [counter, setCounter] = useState(computeInitialCounter());
+  // const [counter, setCounter] = useState(0);
+  // const [counter, setCounter] = useState(computeInitialCounter());
+  const [counter, setCounter] = useState(() => {
+    return computeInitialCounter()
+  })
 
   function increment(){
     // setCounter(counter + 1);
