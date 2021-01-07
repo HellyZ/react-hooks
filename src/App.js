@@ -1,35 +1,21 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useMemo} from 'react';
 
+function complexCompute(num){
+  let i = 0
+  while (i < 1000000000) i++
+  return num * 2
+}
 
 function App() {
-  // const [renderCount, setRenderCount] = useState(1);
-  const [value, setValue] = useState('initial')
-  const renderCount = useRef(1) // object with .current
-  const inputRef = useRef(null) //binding to DOM element input
-  const prevValue = useRef('') //save state without rerender
+  const [number, setNumber] = useState(42)
 
-  useEffect(() => {
-    renderCount.current++ //didnt rerendered
-  })
-
-  useEffect(() => {
-    prevValue.current = value
-  }, [value])
-
-  const focus = () => inputRef.current.focus()
+  const computed = complexCompute(number)
 
   return (
     <div>
-      <div className="container">
-      <h1>Amount of renders: {renderCount.current}</h1>
-      <h2>Previous state: {prevValue.current}</h2>
-        <div className="row justify-content-start">
-          <div className="col-6">
-            <input ref={inputRef} type="text" onChange={(e) => setValue(e.target.value)} value={value} />
-            <button className="btn btn-success" onClick={focus}>Focus</button>
-          </div>
-        </div>
-      </div>
+      <h1>Computed number: {number}</h1>
+      <button className="btn btn-success" onClick={() => setNumber(prev => prev + 1)}>Add</button>
+      <button className="btn btn-danger" onClick={() => setNumber(prev => prev - 1)}>Delete</button>
     </div>
   );
 }
