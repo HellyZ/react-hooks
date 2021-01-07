@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 
 function complexCompute(num){
   console.log('complexCompute')
@@ -19,7 +19,11 @@ function App() {
     return complexCompute(number)
   }, [number])
 
+  useEffect(() => {
+    console.log('Style changed')
+  }, [styles])
 
+  
   return (
     <div>
       <h1 style={styles}>Computed number: {number}</h1>
