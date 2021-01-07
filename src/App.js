@@ -14,6 +14,10 @@ function App() {
     fetch(`https://jsonplaceholder.typicode.com/${type}`)
       .then(response => response.json())
       .then(json => setData(json))
+
+      return () => {
+        console.log('clean type')
+      }
   }, [type]); //rerender if type was changed
 
   const mouseMoveHandler = event => {
