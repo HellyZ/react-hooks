@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <>
       <h1>  Hello! It's example with useContext</h1>
-      <button onClick={show} className="btn btn-success">Show alert</button>
+      <button onClick={() => show('This is text from Main.js')} className="btn btn-success">Show alert</button>
     </>
   )
 }

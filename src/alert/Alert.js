@@ -8,7 +8,7 @@ export default function Alert() {
 
   return (
     <div className="alert alert-success" onClick={alert.hide}>
-      Important message
+      {alert.text}
     </div>
   )
 }
